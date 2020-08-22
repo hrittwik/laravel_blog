@@ -24,3 +24,17 @@ Route::get('test', function () {
     ]);
 });
 
+
+Route::get('/posts/{post}', function($post){
+    $posts = [
+        'my-first-post' => 'Hello, this is my first blog post',
+        'my-second-post' => 'Now I am getting the hang of this blogging thing.'
+    ]
+
+    return view('post', [
+        'post' => $posts[$post]
+    ]);
+
+    //return view('post');
+    //return $post;
+});
