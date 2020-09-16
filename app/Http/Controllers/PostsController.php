@@ -2,27 +2,22 @@
 
 namespace App\Http\Controllers;
 
-Class PostsController
+Class PostsController extends Controller
 {
-    public function show()
+    public function show($slug)
     {
-        
-        $posts = [
-            'my-first-post' => 'Hello, this is my first blog post',
-            'my-second-post' => 'Now I am getting the hang of this blogging thing.'
-        ];
 
-        if (! array_key_exists($post, $posts)){
-            abort(404, 'Sorry, that post was not found.');
-        }
+        $post = DB::table('posts')->where('slug', $slug)->first();
+
+        // dd($post);
 
         return view('post', [
-            'post' => $posts[$post]
+            'post' => $post
         ]);
 
-        //return view('post');
-        //return $post;
 
 
     }
+
+
 }
