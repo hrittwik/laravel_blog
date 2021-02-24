@@ -11,8 +11,10 @@ Class PostsController extends Controller
 
         // dd($post);
 
+        
+
         return view('post', [
-            'post' => $post
+            $post => Post::where('slug', $slug)->firstOrFail()
         ]);
 
 
